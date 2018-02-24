@@ -6,7 +6,7 @@ A little script that automatically plays euromillions for you, as long as there 
 
 1. Rename `config.example.json` to `config.json`
 2. Fill in the required fields in there
-3. Run `python init.py`
+3. Run `python start.py`
 
 ## Configurations
 
