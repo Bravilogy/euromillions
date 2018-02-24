@@ -74,6 +74,8 @@ def generate_tickets(strategy="all"):
         return [get_statistical_ticket()]
     elif strategy == "random":
         return [get_random_ticket()]
+    elif strategy == "fixed":
+        return [get_fixed_ticket()]
 
     return [get_statistical_ticket(), get_random_ticket(), get_fixed_ticket()]
 

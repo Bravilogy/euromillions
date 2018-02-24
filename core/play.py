@@ -149,11 +149,10 @@ def confirm_play_slip(client):
 
 
 class Client:
-    def __init__(self, config_file="config.json"):
-        with open(config_file) as config:
-            self.config = json.load(config)
+    def __init__(self, config):
+        self.config = config
 
-        required_fields = ["username", "password", "name"]
+        required_fields = ["username", "password"]
         for field in required_fields:
             if field not in self.config:
                 raise ValueError(
@@ -166,20 +165,24 @@ class Client:
 
 def play():
     try:
-        print("Spawning the lotto session")
-        client = Client()
+        with open("config.json") as config_data:
+            config = json.load(config_data)
 
-        login(client)
+            print("Creating a session")
+            client = Client(config)
 
-        tickets = generate_tickets('statistical')
+            login(client)
 
-        print("Today's tickets are:")
-        for ticket in tickets:
-            print(format_ticket(ticket))
+            tickets = generate_tickets(
+                config["strategy"] if "strategy" in config else "statistical")
 
-        create_play_slip(client, tickets)
+            print("Tickets we will be playing:")
+            for ticket in tickets:
+                print(format_ticket(ticket))
 
-        confirm_play_slip(client)
+            create_play_slip(client, tickets)
+
+            confirm_play_slip(client)
 
     except Exception as e:
         print(e)
