@@ -1,10 +1,9 @@
 import json
 import time
 import requests
-from pprint import pprint
 from datetime import datetime
 from bs4 import BeautifulSoup
-from tickets_generator import generate_tickets, format_ticket
+from core.tickets_generator import generate_tickets, format_ticket
 
 
 def delayed_message(pre_run_message=None, post_run_message=None):
@@ -187,7 +186,3 @@ def play():
     except Exception as e:
         print(e)
         exit()
-
-
-if __name__ == "__main__":
-    play()

@@ -23,6 +23,10 @@ In order for the script to work, `config.json` needs a few fields to be filled i
 4. **fixed_ticket**. This is where you fill in your fixed ticket numbers. Please note that the ticket array length needs to be 7 (5 normal numbers, 2 lucky numbers). _i.e. [1, 2, 3, 4, 5, 6, 7]_
 5. **number_weeks**. Number of weeks these tickets should recur.
 
+## Requirements
+
+`BeatifulSoup` with `lxml`, `requests`.
+
 ### Tips
 
 You can create a cron job, that runs every X day and the script will automatically calculate the earliest draw date (Tuesday or Friday).
